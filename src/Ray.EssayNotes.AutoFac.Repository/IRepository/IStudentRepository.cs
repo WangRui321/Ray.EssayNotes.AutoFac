@@ -1,6 +1,5 @@
 ﻿using Ray.EssayNotes.AutoFac.Model;
 
-
 namespace Ray.EssayNotes.AutoFac.Repository.IRepository
 {
     /// <summary>

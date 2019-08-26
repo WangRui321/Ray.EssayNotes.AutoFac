@@ -1,9 +1,7 @@
-﻿using System;
-using System.Linq;
-//
-using Ray.EssayNotes.AutoFac.Model;
+﻿using Ray.EssayNotes.AutoFac.Model;
 using Ray.EssayNotes.AutoFac.Repository.IRepository;
-
+using System;
+using System.Linq;
 
 namespace Ray.EssayNotes.AutoFac.Repository.Repository
 {
@@ -17,8 +15,7 @@ namespace Ray.EssayNotes.AutoFac.Repository.Repository
         {
             T instance = Activator.CreateInstance<T>();
 
-            var stuEntity = instance as StudentEntity;
-            if (stuEntity != null)
+            if (instance is StudentEntity stuEntity)
             {
                 stuEntity.Id = id;
                 stuEntity.Name = "学生张三";
@@ -26,8 +23,7 @@ namespace Ray.EssayNotes.AutoFac.Repository.Repository
                 return stuEntity as T;
             }
 
-            var teacherEntity = instance as TeacherEntity;
-            if (teacherEntity != null)
+            if (instance is TeacherEntity teacherEntity)
             {
                 teacherEntity.Id = id;
                 teacherEntity.Name = "教师李四";
@@ -35,8 +31,7 @@ namespace Ray.EssayNotes.AutoFac.Repository.Repository
                 return teacherEntity as T;
             }
 
-            var bookEntity = instance as BookEntity;
-            if (bookEntity != null)
+            if (instance is BookEntity bookEntity)
             {
                 bookEntity.Id = id;
                 bookEntity.Title = "《百年孤独》";

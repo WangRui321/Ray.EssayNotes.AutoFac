@@ -1,7 +1,5 @@
-﻿using System.Web.Mvc;
-//
-using Ray.EssayNotes.AutoFac.Service.IService;
-
+﻿using Ray.EssayNotes.AutoFac.Service.IService;
+using System.Web.Mvc;
 
 namespace Ray.EssayNotes.AutoFac.NetFrameworkMvc.Controllers
 {

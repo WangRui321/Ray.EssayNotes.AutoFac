@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +12,6 @@ using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http.Description;
 using System.Xml.Linq;
-using Newtonsoft.Json;
 
 namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
 {
@@ -50,13 +50,21 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
         public IDictionary<Type, object> SampleObjects { get; internal set; }
 
         /// <summary>
-        /// Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
-        /// stopping when the factory successfully returns a non-<see langref="null"/> object.
+        /// Gets factories for the objects that the supported formatters will serialize as samples.
+        /// Processed in order, stopping when the factory successfully returns a non- <see
+        /// langref="null"/> object.
         /// </summary>
         /// <remarks>
         /// Collection includes just <see cref="ObjectGenerator.GenerateObject(Type)"/> initially. Use
-        /// <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
-        /// <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
+        /// <code>
+        /// SampleObjectFactories.Insert(0, func)
+        /// </code>
+        /// to provide an override and
+        /// <code>
+        /// SampleObjectFactories.Add(func)
+        /// </code>
+        /// to provide a fallback.
+        /// </remarks>
         [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures",
             Justification = "This is an appropriate nesting of generic types")]
         public IList<Func<HelpPageSampleGenerator, Type, object>> SampleObjectFactories { get; private set; }
@@ -85,7 +93,9 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
         /// Gets the request or response body samples.
         /// </summary>
         /// <param name="api">The <see cref="ApiDescription"/>.</param>
-        /// <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+        /// <param name="sampleDirection">
+        /// The value indicating whether the sample is for a request or for a response.
+        /// </param>
         /// <returns>The samples keyed by media type.</returns>
         public virtual IDictionary<MediaTypeHeaderValue, object> GetSample(ApiDescription api, SampleDirection sampleDirection)
         {
@@ -107,8 +117,9 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
                 samples.Add(actionSample.Key.MediaType, WrapSampleIfString(actionSample.Value));
             }
 
-            // Do the sample generation based on formatters only if an action doesn't return an HttpResponseMessage.
-            // Here we cannot rely on formatters because we don't know what's in the HttpResponseMessage, it might not even use formatters.
+            // Do the sample generation based on formatters only if an action doesn't return an
+            // HttpResponseMessage. Here we cannot rely on formatters because we don't know what's in
+            // the HttpResponseMessage, it might not even use formatters.
             if (type != null && !typeof(HttpResponseMessage).IsAssignableFrom(type))
             {
                 object sampleObject = GetSampleObject(type);
@@ -144,16 +155,20 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
         /// <param name="type">The CLR type.</param>
         /// <param name="formatter">The formatter.</param>
         /// <param name="mediaType">The media type.</param>
-        /// <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+        /// <param name="sampleDirection">
+        /// The value indicating whether the sample is for a request or for a response.
+        /// </param>
         /// <returns>The sample that matches the parameters.</returns>
         public virtual object GetActionSample(string controllerName, string actionName, IEnumerable<string> parameterNames, Type type, MediaTypeFormatter formatter, MediaTypeHeaderValue mediaType, SampleDirection sampleDirection)
         {
             object sample;
 
-            // First, try to get the sample provided for the specified mediaType, sampleDirection, controllerName, actionName and parameterNames.
-            // If not found, try to get the sample provided for the specified mediaType, sampleDirection, controllerName and actionName regardless of the parameterNames.
-            // If still not found, try to get the sample provided for the specified mediaType and type.
-            // Finally, try to get the sample provided for the specified mediaType.
+            // First, try to get the sample provided for the specified mediaType, sampleDirection,
+            // controllerName, actionName and parameterNames. If not found, try to get the sample
+            // provided for the specified mediaType, sampleDirection, controllerName and actionName
+            // regardless of the parameterNames. If still not found, try to get the sample provided
+            // for the specified mediaType and type. Finally, try to get the sample provided for the
+            // specified mediaType.
             if (ActionSamples.TryGetValue(new HelpPageSampleKey(mediaType, sampleDirection, controllerName, actionName, parameterNames), out sample) ||
                 ActionSamples.TryGetValue(new HelpPageSampleKey(mediaType, sampleDirection, controllerName, actionName, new[] { "*" }), out sample) ||
                 ActionSamples.TryGetValue(new HelpPageSampleKey(mediaType, type), out sample) ||
@@ -166,10 +181,10 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
         }
 
         /// <summary>
-        /// Gets the sample object that will be serialized by the formatters. 
-        /// First, it will look at the <see cref="SampleObjects"/>. If no sample object is found, it will try to create
-        /// one using <see cref="DefaultSampleObjectFactory"/> (which wraps an <see cref="ObjectGenerator"/>) and other
-        /// factories in <see cref="SampleObjectFactories"/>.
+        /// Gets the sample object that will be serialized by the formatters. First, it will look at
+        /// the <see cref="SampleObjects"/>. If no sample object is found, it will try to create one
+        /// using <see cref="DefaultSampleObjectFactory"/> (which wraps an <see
+        /// cref="ObjectGenerator"/>) and other factories in <see cref="SampleObjectFactories"/>.
         /// </summary>
         /// <param name="type">The type.</param>
         /// <returns>The sample object.</returns>
@@ -208,7 +223,8 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
         }
 
         /// <summary>
-        /// Resolves the actual type of <see cref="System.Net.Http.ObjectContent{T}"/> passed to the <see cref="System.Net.Http.HttpRequestMessage"/> in an action.
+        /// Resolves the actual type of <see cref="System.Net.Http.ObjectContent{T}"/> passed to the
+        /// <see cref="System.Net.Http.HttpRequestMessage"/> in an action.
         /// </summary>
         /// <param name="api">The <see cref="ApiDescription"/>.</param>
         /// <returns>The type.</returns>
@@ -222,13 +238,16 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
         }
 
         /// <summary>
-        /// Resolves the type of the action parameter or return value when <see cref="HttpRequestMessage"/> or <see cref="HttpResponseMessage"/> is used.
+        /// Resolves the type of the action parameter or return value when <see
+        /// cref="HttpRequestMessage"/> or <see cref="HttpResponseMessage"/> is used.
         /// </summary>
         /// <param name="api">The <see cref="ApiDescription"/>.</param>
         /// <param name="controllerName">Name of the controller.</param>
         /// <param name="actionName">Name of the action.</param>
         /// <param name="parameterNames">The parameter names.</param>
-        /// <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+        /// <param name="sampleDirection">
+        /// The value indicating whether the sample is for a request or a response.
+        /// </param>
         /// <param name="formatters">The formatters.</param>
         [SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", Justification = "This is only used in advanced scenarios.")]
         public virtual Type ResolveType(ApiDescription api, string controllerName, string actionName, IEnumerable<string> parameterNames, SampleDirection sampleDirection, out Collection<MediaTypeFormatter> formatters)
@@ -265,6 +284,7 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
                         type = requestBodyParameter == null ? null : requestBodyParameter.ParameterDescriptor.ParameterType;
                         formatters = api.SupportedRequestBodyFormatters;
                         break;
+
                     case SampleDirection.Response:
                     default:
                         type = api.ResponseDescription.ResponseType ?? api.ResponseDescription.DeclaredType;
@@ -408,6 +428,7 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
             {
                 case SampleDirection.Request:
                     return formatter.CanReadType(type);
+
                 case SampleDirection.Response:
                     return formatter.CanWriteType(type);
             }

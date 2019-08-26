@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +10,6 @@ using System.Runtime.Serialization;
 using System.Web.Http;
 using System.Web.Http.Description;
 using System.Xml.Serialization;
-using Newtonsoft.Json;
 
 namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage.ModelDescriptions
 {
@@ -234,13 +234,10 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage.ModelDescription
                 member.GetCustomAttribute<EnumMemberAttribute>() != null :
                 member.GetCustomAttribute<DataMemberAttribute>() != null;
 
-            // Display member only if all the followings are true:
-            // no JsonIgnoreAttribute
-            // no XmlIgnoreAttribute
-            // no IgnoreDataMemberAttribute
-            // no NonSerializedAttribute
-            // no ApiExplorerSettingsAttribute with IgnoreApi set to true
-            // no DataContractAttribute without DataMemberAttribute or EnumMemberAttribute
+            // Display member only if all the followings are true: no JsonIgnoreAttribute no
+            // XmlIgnoreAttribute no IgnoreDataMemberAttribute no NonSerializedAttribute no
+            // ApiExplorerSettingsAttribute with IgnoreApi set to true no DataContractAttribute
+            // without DataMemberAttribute or EnumMemberAttribute
             return jsonIgnore == null &&
                 xmlIgnore == null &&
                 ignoreDataMember == null &&

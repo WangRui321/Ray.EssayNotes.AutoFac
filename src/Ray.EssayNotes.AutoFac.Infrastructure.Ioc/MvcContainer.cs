@@ -1,13 +1,10 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
-//
-using Autofac;
+﻿using Autofac;
 using Autofac.Integration.Mvc;
-//
 using Ray.EssayNotes.AutoFac.Repository.IRepository;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
-
+using System;
+using System.Linq;
+using System.Reflection;
 
 namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
 {
@@ -28,7 +25,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             //新建容器构建器，用于注册组件和服务
             var builder = new ContainerBuilder();
             //注册组件
-            MyBuild(builder); 
+            MyBuild(builder);
             func?.Invoke(builder);
             //利用构建器创建容器
             Instance = builder.Build();

@@ -2,7 +2,6 @@
 using Ray.EssayNotes.AutoFac.Repository.Repository;
 using Ray.EssayNotes.AutoFac.Service.IService;
 
-
 namespace Ray.EssayNotes.AutoFac.Service.Service
 {
     /// <summary>
@@ -11,6 +10,7 @@ namespace Ray.EssayNotes.AutoFac.Service.Service
     public class StudentService : IStudentService
     {
         private readonly IStudentRepository _studentRepository;
+
         /// <summary>
         /// 构造注入
         /// </summary>
@@ -19,6 +19,7 @@ namespace Ray.EssayNotes.AutoFac.Service.Service
         {
             _studentRepository = studentRepository;
         }
+
         /// <summary>
         /// 构造注入
         /// </summary>

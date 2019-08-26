@@ -1,3 +1,5 @@
+using Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage.ModelDescriptions;
+using Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,8 +13,6 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage.ModelDescriptions;
-using Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage.Models;
 
 namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
 {
@@ -81,7 +81,8 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
         }
 
         /// <summary>
-        /// Sets the sample response directly for the specified media type of the action with specific parameters.
+        /// Sets the sample response directly for the specified media type of the action with
+        /// specific parameters.
         /// </summary>
         /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
         /// <param name="sample">The sample response.</param>
@@ -118,8 +119,9 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
         }
 
         /// <summary>
-        /// Specifies the actual type of <see cref="System.Net.Http.ObjectContent{T}"/> passed to the <see cref="System.Net.Http.HttpRequestMessage"/> in an action.
-        /// The help page will use this information to produce more accurate request samples.
+        /// Specifies the actual type of <see cref="System.Net.Http.ObjectContent{T}"/> passed to the
+        /// <see cref="System.Net.Http.HttpRequestMessage"/> in an action. The help page will use
+        /// this information to produce more accurate request samples.
         /// </summary>
         /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
         /// <param name="type">The type.</param>
@@ -131,8 +133,9 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
         }
 
         /// <summary>
-        /// Specifies the actual type of <see cref="System.Net.Http.ObjectContent{T}"/> passed to the <see cref="System.Net.Http.HttpRequestMessage"/> in an action.
-        /// The help page will use this information to produce more accurate request samples.
+        /// Specifies the actual type of <see cref="System.Net.Http.ObjectContent{T}"/> passed to the
+        /// <see cref="System.Net.Http.HttpRequestMessage"/> in an action. The help page will use
+        /// this information to produce more accurate request samples.
         /// </summary>
         /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
         /// <param name="type">The type.</param>
@@ -145,8 +148,9 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
         }
 
         /// <summary>
-        /// Specifies the actual type of <see cref="System.Net.Http.ObjectContent{T}"/> returned as part of the <see cref="System.Net.Http.HttpRequestMessage"/> in an action.
-        /// The help page will use this information to produce more accurate response samples.
+        /// Specifies the actual type of <see cref="System.Net.Http.ObjectContent{T}"/> returned as
+        /// part of the <see cref="System.Net.Http.HttpRequestMessage"/> in an action. The help page
+        /// will use this information to produce more accurate response samples.
         /// </summary>
         /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
         /// <param name="type">The type.</param>
@@ -158,8 +162,9 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
         }
 
         /// <summary>
-        /// Specifies the actual type of <see cref="System.Net.Http.ObjectContent{T}"/> returned as part of the <see cref="System.Net.Http.HttpRequestMessage"/> in an action.
-        /// The help page will use this information to produce more accurate response samples.
+        /// Specifies the actual type of <see cref="System.Net.Http.ObjectContent{T}"/> returned as
+        /// part of the <see cref="System.Net.Http.HttpRequestMessage"/> in an action. The help page
+        /// will use this information to produce more accurate response samples.
         /// </summary>
         /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
         /// <param name="type">The type.</param>
@@ -209,13 +214,12 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
         }
 
         /// <summary>
-        /// Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+        /// Gets the model that represents an API displayed on the help page. The model is
+        /// initialized on the first call and cached for subsequent calls.
         /// </summary>
         /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
         /// <param name="apiDescriptionId">The <see cref="ApiDescription"/> ID.</param>
-        /// <returns>
-        /// An <see cref="HelpPageApiModel"/>
-        /// </returns>
+        /// <returns>An <see cref="HelpPageApiModel"/></returns>
         public static HelpPageApiModel GetHelpPageApiModel(this HttpConfiguration config, string apiDescriptionId)
         {
             object model;
@@ -269,26 +273,14 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
                         complexTypeDescription = typeDescription as ComplexTypeModelDescription;
                     }
 
-                    // Example:
-                    // [TypeConverter(typeof(PointConverter))]
-                    // public class Point
-                    // {
-                    //     public Point(int x, int y)
-                    //     {
-                    //         X = x;
-                    //         Y = y;
-                    //     }
-                    //     public int X { get; set; }
-                    //     public int Y { get; set; }
-                    // }
-                    // Class Point is bindable with a TypeConverter, so Point will be added to UriParameters collection.
-                    // 
-                    // public class Point
-                    // {
-                    //     public int X { get; set; }
-                    //     public int Y { get; set; }
-                    // }
-                    // Regular complex class Point will have properties X and Y added to UriParameters collection.
+                    // Example: [TypeConverter(typeof(PointConverter))] public class Point { public
+                    // Point(int x, int y) { X = x; Y = y; } public int X { get; set; } public int Y
+                    // { get; set; } } Class Point is bindable with a TypeConverter, so Point will be
+                    // added to UriParameters collection.
+                    //
+                    // public class Point { public int X { get; set; } public int Y { get; set; } }
+                    // Regular complex class Point will have properties X and Y added to
+                    // UriParameters collection.
                     if (complexTypeDescription != null
                         && !IsBindableWithTypeConverter(parameterType))
                     {
@@ -317,9 +309,9 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
                     {
                         Debug.Assert(parameterDescriptor == null);
 
-                        // If parameterDescriptor is null, this is an undeclared route parameter which only occurs
-                        // when source is FromUri. Ignored in request model and among resource parameters but listed
-                        // as a simple string here.
+                        // If parameterDescriptor is null, this is an undeclared route parameter
+                        // which only occurs when source is FromUri. Ignored in request model and
+                        // among resource parameters but listed as a simple string here.
                         ModelDescription modelDescription = modelGenerator.GetOrCreateModelDescription(typeof(string));
                         AddParameterDescription(apiModel, apiParameter, modelDescription);
                     }

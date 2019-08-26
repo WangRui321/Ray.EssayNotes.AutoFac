@@ -1,8 +1,8 @@
+using Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage.ModelDescriptions;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http.Headers;
 using System.Web.Http.Description;
-using Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage.ModelDescriptions;
 
 namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage.Models
 {
@@ -28,7 +28,8 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage.Models
         public ApiDescription ApiDescription { get; set; }
 
         /// <summary>
-        /// Gets or sets the <see cref="ParameterDescription"/> collection that describes the URI parameters for the API.
+        /// Gets or sets the <see cref="ParameterDescription"/> collection that describes the URI
+        /// parameters for the API.
         /// </summary>
         public Collection<ParameterDescription> UriParameters { get; private set; }
 

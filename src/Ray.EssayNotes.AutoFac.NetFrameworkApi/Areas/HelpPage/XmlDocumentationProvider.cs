@@ -1,3 +1,4 @@
+using Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage.ModelDescriptions;
 using System;
 using System.Globalization;
 using System.Linq;
@@ -5,12 +6,12 @@ using System.Reflection;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
 using System.Xml.XPath;
-using Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage.ModelDescriptions;
 
 namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
 {
     /// <summary>
-    /// A custom <see cref="IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+    /// A custom <see cref="IDocumentationProvider"/> that reads the API documentation from an XML
+    /// documentation file.
     /// </summary>
     public class XmlDocumentationProvider : IDocumentationProvider, IModelDocumentationProvider
     {
@@ -151,7 +152,8 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
             }
             if (type.IsNested)
             {
-                // Changing the nested type name from OuterType+InnerType to OuterType.InnerType to match the XML documentation syntax.
+                // Changing the nested type name from OuterType+InnerType to OuterType.InnerType to
+                // match the XML documentation syntax.
                 name = name.Replace("+", ".");
             }
 

@@ -3,7 +3,8 @@ using System;
 namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
 {
     /// <summary>
-    /// This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+    /// This represents a preformatted text sample on the help page. There's a display template named
+    /// TextSample associated with this class.
     /// </summary>
     public class TextSample
     {

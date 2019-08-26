@@ -2,13 +2,12 @@
 using System.Linq;
 using System.Reflection;
 
-
 namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Helpers
 {
     public static class ReflectionHelper
     {
         /// <summary>
-        ///  获取Asp.Net FrameWork项目所有程序集
+        /// 获取Asp.Net FrameWork项目所有程序集
         /// </summary>
         /// <returns></returns>
         public static Assembly[] GetAllAssemblies()
@@ -26,7 +25,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Helpers
         }
 
         /// <summary>
-        ///  获取Asp.Net FrameWork Web项目所有程序集
+        /// 获取Asp.Net FrameWork Web项目所有程序集
         /// </summary>
         /// <returns></returns>
         public static Assembly[] GetAllAssembliesWeb()

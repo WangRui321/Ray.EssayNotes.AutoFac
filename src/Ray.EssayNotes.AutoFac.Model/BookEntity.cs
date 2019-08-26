@@ -1,6 +1,4 @@
-﻿
-
-namespace Ray.EssayNotes.AutoFac.Model
+﻿namespace Ray.EssayNotes.AutoFac.Model
 {
     /// <summary>
     /// 书籍实体
@@ -11,6 +9,7 @@ namespace Ray.EssayNotes.AutoFac.Model
         /// 书名
         /// </summary>
         public string Title { get; set; }
+
         /// <summary>
         /// 作者
         /// </summary>

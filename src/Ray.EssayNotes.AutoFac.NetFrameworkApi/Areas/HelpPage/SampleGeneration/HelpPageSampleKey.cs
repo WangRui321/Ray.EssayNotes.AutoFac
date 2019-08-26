@@ -44,7 +44,8 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
         }
 
         /// <summary>
-        /// Creates a new <see cref="HelpPageSampleKey"/> based on <see cref="SampleDirection"/>, controller name, action name and parameter names.
+        /// Creates a new <see cref="HelpPageSampleKey"/> based on <see cref="SampleDirection"/>,
+        /// controller name, action name and parameter names.
         /// </summary>
         /// <param name="sampleDirection">The <see cref="SampleDirection"/>.</param>
         /// <param name="controllerName">Name of the controller.</param>
@@ -76,7 +77,8 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
         }
 
         /// <summary>
-        /// Creates a new <see cref="HelpPageSampleKey"/> based on media type, <see cref="SampleDirection"/>, controller name, action name and parameter names.
+        /// Creates a new <see cref="HelpPageSampleKey"/> based on media type, <see
+        /// cref="SampleDirection"/>, controller name, action name and parameter names.
         /// </summary>
         /// <param name="mediaType">The media type.</param>
         /// <param name="sampleDirection">The <see cref="SampleDirection"/>.</param>
@@ -97,25 +99,19 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage
         /// <summary>
         /// Gets the name of the controller.
         /// </summary>
-        /// <value>
-        /// The name of the controller.
-        /// </value>
+        /// <value>The name of the controller.</value>
         public string ControllerName { get; private set; }
 
         /// <summary>
         /// Gets the name of the action.
         /// </summary>
-        /// <value>
-        /// The name of the action.
-        /// </value>
+        /// <value>The name of the action.</value>
         public string ActionName { get; private set; }
 
         /// <summary>
         /// Gets the media type.
         /// </summary>
-        /// <value>
-        /// The media type.
-        /// </value>
+        /// <value>The media type.</value>
         public MediaTypeHeaderValue MediaType { get; private set; }
 
         /// <summary>

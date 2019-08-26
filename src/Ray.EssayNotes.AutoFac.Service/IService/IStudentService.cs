@@ -1,6 +1,4 @@
-﻿
-
-namespace Ray.EssayNotes.AutoFac.Service.IService
+﻿namespace Ray.EssayNotes.AutoFac.Service.IService
 {
     /// <summary>
     /// 学生逻辑处理interface

@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
-//
-using Autofac.Extensions.DependencyInjection;
-
-
-namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions
+﻿namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions
 {
     /// <summary>
     /// AutoFac扩展

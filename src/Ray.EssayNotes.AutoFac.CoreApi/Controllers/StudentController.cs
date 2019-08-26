@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-//
-using Ray.EssayNotes.AutoFac.Service.IService;
-
+﻿//
 
 namespace Ray.EssayNotes.AutoFac.CoreApi.Controllers
 {
@@ -9,6 +6,7 @@ namespace Ray.EssayNotes.AutoFac.CoreApi.Controllers
     public class StudentController : ControllerBase
     {
         private readonly IStudentService _studentService;
+
         public StudentController(IStudentService studentService)
         {
             _studentService = studentService;

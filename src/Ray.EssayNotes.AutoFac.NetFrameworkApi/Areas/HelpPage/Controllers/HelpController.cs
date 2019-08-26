@@ -1,8 +1,8 @@
+using Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage.ModelDescriptions;
+using Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage.Models;
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage.ModelDescriptions;
-using Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage.Models;
 
 namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Areas.HelpPage.Controllers
 {

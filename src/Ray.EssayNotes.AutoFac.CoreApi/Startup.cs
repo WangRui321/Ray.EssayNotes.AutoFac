@@ -28,6 +28,8 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             //注册
             //自定义注册
+            //services.AddMyServices();
+
             services.AddMyServices();
             
             /*
@@ -36,7 +38,7 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
             //repository
             Assembly repositoryAssemblies = assemblies.FirstOrDefault(x => x.FullName.Contains(".Repository"));
             services.AddAssemblyServices(repositoryAssemblies);
-            //service  
+            //service
             Assembly serviceAssemblies = assemblies.FirstOrDefault(x => x.FullName.Contains(".Service"));
             services.AddAssemblyServices(serviceAssemblies);
             */
@@ -51,7 +53,8 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
             }
             else
             {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                // The default HSTS value is 30 days. You may want to change this for production
+                // scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
